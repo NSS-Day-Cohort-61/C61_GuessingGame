@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace c61_guessingGame
 {
@@ -9,9 +10,16 @@ namespace c61_guessingGame
             
 
             int secretNumber = new Random().Next(1, 101);
-            Console.WriteLine(secretNumber.ToString());
 
-            for (int i = 4; i >= 1; i--)
+            // Prompt the user for a difficulty level before they are prompted to guess the number.
+            Console.WriteLine("choose a difficulty level: 1 - easy,2- medium,3- hard");
+            int difficulty = int.Parse(Console.ReadLine());
+
+            // The difficulty level should determine how many guesses the user gets. The difficulty levels should be:
+            List<int> difficulties = new List<int>() {8, 6, 4};
+            int numberOfGuesses = difficulties[difficulty-1];
+
+            for (int i = numberOfGuesses; i >= 1; i--)
             {
                 Console.WriteLine($"Guess the secret number (Guess {i}): ");
                 int answer = int.Parse(Console.ReadLine());
@@ -27,12 +35,7 @@ namespace c61_guessingGame
                     Console.WriteLine(answer<secretNumber? "too low":"too high");
                 }
             }
-
-
-
-            
-
-            
+           
         }
     }
 }
