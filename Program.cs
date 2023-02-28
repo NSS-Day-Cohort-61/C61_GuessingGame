@@ -8,14 +8,11 @@ namespace c61_guessingGame
         {
             
 
-
-            //Use a random number to set the secret number between 1 and 100 instead of a hard-coded number.
             int secretNumber = new Random().Next(1, 101);
             Console.WriteLine(secretNumber.ToString());
 
             for (int i = 4; i >= 1; i--)
             {
-                //The prompt should display the number of guesses the user has left.
                 Console.WriteLine($"Guess the secret number (Guess {i}): ");
                 int answer = int.Parse(Console.ReadLine());
 
@@ -26,7 +23,8 @@ namespace c61_guessingGame
                 }
                 else
                 {
-                    Console.WriteLine("You did not guess the secret number.");
+                    //Inform the user if their guess was too high or too low, when they guess incorrectly.
+                    Console.WriteLine(answer<secretNumber? "too low":"too high");
                 }
             }
 
