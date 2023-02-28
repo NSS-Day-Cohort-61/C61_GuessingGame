@@ -9,22 +9,19 @@ namespace c61_guessingGame
             
 
 
+            //Use a random number to set the secret number between 1 and 100 instead of a hard-coded number.
+            int secretNumber = new Random().Next(1, 101);
+            Console.WriteLine(secretNumber.ToString());
 
-            int secretNumber = 42;
-            //Give the user four chances to guess the number.
-            for (int i = 1; i <= 4; i++)
+            for (int i = 4; i >= 1; i--)
             {
-                //Display the number of the user's current guess in the prompt. 
-                //For example, if the user has already guessed one time, the prommpt 
-                //should say something like Your guess (2)>.
+                //The prompt should display the number of guesses the user has left.
                 Console.WriteLine($"Guess the secret number (Guess {i}): ");
                 int answer = int.Parse(Console.ReadLine());
 
-                //Continue to display the success or failure messages as in phase 2
                 if (answer == secretNumber)
                 {
                     Console.WriteLine("You guessed the secret number!");
-                    // End the loop early if the user guesses the correct number.
                     break;
                 }
                 else
