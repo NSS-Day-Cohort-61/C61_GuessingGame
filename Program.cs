@@ -8,20 +8,22 @@ namespace c61_guessingGame
         static void Main(string[] args)
         {
             
-
             int secretNumber = new Random().Next(1, 101);
 
-            // Prompt the user for a difficulty level before they are prompted to guess the number.
-            Console.WriteLine("choose a difficulty level: 1 - easy,2- medium,3- hard");
+            //Add a difficulty level of "Cheater" 
+            //which will cause the program to continue prompting the user until they get the answer correct.
+
+            Console.WriteLine("choose a difficulty level: 1 - easy,2- medium,3- hard, 4- cheater");
             int difficulty = int.Parse(Console.ReadLine());
 
-            // The difficulty level should determine how many guesses the user gets. The difficulty levels should be:
-            List<int> difficulties = new List<int>() {8, 6, 4};
+            
+            List<int> difficulties = new List<int>() {8, 6, 4, 2};
             int numberOfGuesses = difficulties[difficulty-1];
 
-            for (int i = numberOfGuesses; i >= 1; i--)
+            int numberGuessesLeft = numberOfGuesses;
+            while (difficulty == 4 || numberGuessesLeft >= 1)
             {
-                Console.WriteLine($"Guess the secret number (Guess {i}): ");
+                Console.WriteLine($"Guess the secret number (Guess {(difficulty == 4 ? "infinite!!!": numberGuessesLeft)}): ");
                 int answer = int.Parse(Console.ReadLine());
 
                 if (answer == secretNumber)
@@ -31,9 +33,9 @@ namespace c61_guessingGame
                 }
                 else
                 {
-                    //Inform the user if their guess was too high or too low, when they guess incorrectly.
                     Console.WriteLine(answer<secretNumber? "too low":"too high");
                 }
+                numberGuessesLeft--;
             }
            
         }
