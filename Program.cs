@@ -6,27 +6,33 @@ namespace c61_guessingGame
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Guess the secret number: ");
+            
 
-            string answer = Console.ReadLine();
-                    
 
-            /*Create a variable to contain the secret number. 
-            This number should be hard-coded for now. 42 is a nice number.*/
+
             int secretNumber = 42;
-
-            //No longer display the user's guess. They know what they guessed, right?
-
-            /*Compare the user's guess with the secret number. Display
-            a success message if the guess is correct, otherwise display a failure message.*/
-            if(int.Parse(answer) == secretNumber)
+            //Give the user four chances to guess the number.
+            for (int i = 0; i < 4; i++)
             {
-                Console.WriteLine("You guessed the secret number!");
+                Console.WriteLine("Guess the secret number: ");
+                int answer = int.Parse(Console.ReadLine());
+
+                //Continue to display the success or failure messages as in phase 2
+                if (answer == secretNumber)
+                {
+                    Console.WriteLine("You guessed the secret number!");
+                }
+                else
+                {
+                    Console.WriteLine("You did not guess the secret number.");
+                }
             }
-            else
-            {
-                Console.WriteLine("You did not guess the secret number.");
-            }
+
+
+
+            
+
+            
         }
     }
 }
